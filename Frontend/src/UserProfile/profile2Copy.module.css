@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Roboto+Condensed:wght@700&display=swap');
+
+
+  .container {
+    height: max-content;
+  width: 80%;
+
+  margin-top: 10px;
+  margin-left: 13%;
+  margin-right: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;	
+}
+
+.userdetails {
+  display: flex;
+  width: 80%;
+background: #fdfeff45;
+  margin: 10px;
+  height: auto;
+  font-size: 23px;
+  border-radius: 10px;
+  border: .1px solid rgb(212, 212, 212);
+}
+
+.userdetails div:last-child {
+  margin-top: 15px;
+}
+
+.user_bio {
+  margin-top: 20px;
+  width: 20%;
+}
+.user_bio li {
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+.user_bio li:first-child {
+  margin-bottom: 20px;
+  font-weight: 500;
+  flex-wrap: wrap;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+}
+
+.user_bio li:last-child {
+  text-transform: capitalize;
+
+}
+
+
+
+.userfollow {
+  width: 30%;
+  
+
+  position: relative;
+  top: -8px;
+}
+
+.profile_pic {
+  padding: 10px;
+  padding-right: 20px;
+  float: left;
+}
+.profile_pic img {
+  vertical-align: middle;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.allpost {
+background: #9dbae640;
+padding: 5px;
+  width: 80%;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+
+
+/* #newFollow section */
+.followersmain{
+margin: 1%;
+color: black;
+}
+.followbtn{
+display: flex;
+justify-content: center;
+cursor: pointer;
+height: fit-content;
+width: min-content;
+margin-left: 19%;
+}
+.fol_status{
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: baseline;
+  font-size: large;
+}
+
+/* Image */
+.image-container {
+  width: 100%;
+  padding-bottom: 75%; /* 4:3 aspect ratio (adjust as needed) */
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 10px;/* Maintain aspect ratio and cover the container */
+}
+
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgb(255, 255, 255);
+font-size: 30px;
+  border-radius: 10px;/* Maintain aspect ratio and cover the container */
+
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.overlay-content i {
+  font-size: 24px;
+  margin: 5px;
+  color: rgb(255, 255, 255);
+}
+
+.like-section,
+.comment-section,
+.delete-section {
+  margin: 5px;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+.confirmation{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.com_like{
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.comments{
+  cursor: pointer;
+
+}
+.likebtn{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+}

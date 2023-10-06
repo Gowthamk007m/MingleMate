@@ -4,6 +4,7 @@ import Profilename from "../FeedFunctions/Profilename";
 import LikeButton from "../FeedFunctions/LikeButton";
 import Commnetspop from "../comments/commnetspop";
 import FollowStatus from "../Follow&Unfollow/FollowStatus";
+import ReactDOM from "react-dom";
 
 const LazyImage = React.lazy(() => import("./LazyImage"));
 
@@ -15,6 +16,7 @@ const RightData = ({
   caption,
   profile,
   comments,
+  rerender
 }) => {
   const userId = userAccount;
   const [showAllComments, setShowAllComments] = useState(false);
@@ -60,6 +62,9 @@ const RightData = ({
     }
   };
 
+  useEffect(() => {
+    renderRandomComment()
+  },[rerender])
   return (
     <div className=" rounded overflow-hidden mt-2  border w-full lg:w-6/12 md:w-6/12 bg-white mx-0 md:mx-0 lg:mx-0">
       <div className="w-full flex justify-between p-3">
@@ -169,6 +174,7 @@ const RightData = ({
                   image_id={image_id.id}
                   image={image}
                   onClose={() => setShowAllComments(false)}
+                  rerend={rerender}
                 />
               </div>
             ) : (
@@ -213,20 +219,23 @@ const RightData = ({
                     image_id={image_id.id}
                     image={image}
                     onClose={() => setShowAllComments(false)}
+                    rerend={rerender}
                   />
                   {comment.content}
                 </div>
               ))
             : renderRandomComment()}
-          {/* {showAllComments &&
+          {showAllComments &&
             ReactDOM.createPortal(
               <Commnetspop
                 comments={comments}
                 image_id={image_id.id}
+                image={image}
                 onClose={() => setShowAllComments(false)}
+                 rerend={rerender}
               />,
               document.body
-            )} */}
+            )}
         </div>
       </div>
     </div>

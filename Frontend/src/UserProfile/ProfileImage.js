@@ -13,7 +13,7 @@ import Commnetspop from "../comments/commnetspop";
 const LazyImage = React.lazy(() => import("./LazyForProfile"));
 
 
-const ProfileImage = ({ image, onDelete, index, profile }) => {
+const ProfileImage = ({ image, onDelete, index, profile,update }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const [From_pro, setFrom_pro] = useState(false);
@@ -37,7 +37,7 @@ const ProfileImage = ({ image, onDelete, index, profile }) => {
 const commentLength = image.comments.length;
 console.log("com", commentLength);
     return (
-      <div key={index} className={`${styles["image-container"]}`}>
+      <div key={index} className={`${styles["image-container"]}`} onClick={update}>
         <div className={`${styles["image-wrapper"]}`}>
           <Suspense
             fallback={

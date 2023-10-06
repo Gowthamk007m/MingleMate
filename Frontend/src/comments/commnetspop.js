@@ -3,49 +3,36 @@ import { Button } from "flowbite-react";
 import { format } from "date-fns";
 
 import axios from "axios";
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 
-
-const Commnetspop = ({ comments, onClose, image_id,image }) => {
-
-
-
-
-
+const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   const [allnewcomments, setComments] = useState([]);
   const { authTokens, user } = useContext(AuthContext);
-
   const [newComment, setNewComment] = useState("");
   const [imageData, setImageData] = useState({});
+  const [from_com, setfrom_com] = useState([]);
+  const [com_len, setcom_len] = useState("loading");
+  const apiEndpoint = `/Api/comments/${image_id}/`;
 
-  const [from_com, setfrom_com] = useState(false);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(apiEndpoint, {
+        headers: {
+          Authorization: "Bearer " + authTokens.access,
+        },
+      });
+      setComments(response.data.comment);
+      console.log("usercomment", response.data.comment);
+      setImageData(response.data.images);
 
-  
-  const [com_len, setcom_len] = useState( comments.length);
+      setcom_len(response.data.comment.length);
 
-  
-  useEffect(() => {
-    const apiEndpoint = `/Api/comments/${image_id}/`; 
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(apiEndpoint, {
-          headers: {
-            Authorization: "Bearer " + authTokens.access,
-          },
-        });
-        setComments(response.data.comment);
-        setImageData(response.data.images);
-
-        console.log("commnets", response.data.comment);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-      }
-    };
-
-    fetchData(); 
-  }, [image_id]);
+      console.log("commnets", response.data.comment);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
 
   const handleSubmitComment = async (e) => {
     e.preventDefault();
@@ -65,12 +52,9 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
       });
       console.log("Comment posted successfully!");
       setNewComment("");
-      setcom_len(com_len + 1);
 
       const response = await axios.get(`/Api/comments/${image_id}/`);
       setComments(response.data.comment);
-
-      
     } catch (error) {
       console.error("Error posting comment:", error);
     }
@@ -84,12 +68,12 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
           Authorization: "Bearer " + authTokens.access,
         },
       });
-      
+
       console.log("Comment deleted successfully!");
-      
+
       const response = await axios.get(`/Api/comments/${image_id}/`);
       setComments(response.data.comment);
-      setcom_len(com_len-1)
+      setfrom_com(from_com + 1);
     } catch (error) {
       console.error("Error deleting comment:", error);
     }
@@ -100,6 +84,10 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
       onClose();
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, [newComment, from_com]);
 
   return (
     <div className="popup-overlay" onClick={handleOutsideClick}>
@@ -112,7 +100,6 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
         </div>
 
         <div className="relative flex-col flex-wrap overflow-y-scroll w-[100%]  lg:w-[50%]   ">
-          {/* <section className=" bg-black border py-0 lg:py-0 antialiased"> */}
 
           <div className="w-full  flex-col justify-center ">
             <div className="border-2 mb-2 px-2">
@@ -133,7 +120,6 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
                     className="px-0 w-full max-h-[2rem] min-h-[2rem] text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                     placeholder="Write a comment..."
                     required
-                    defaultValue={""}
                     value={newComment}
                   />
                 </div>
@@ -141,6 +127,7 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
                   color="light"
                   type="submit"
                   className="mt-1 mb-1 border-blue-500 px-0 py-0 text-sm max-h-[2rem]"
+                  onClick={rerend}
                 >
                   Post comment
                 </Button>
@@ -152,19 +139,19 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
             {allnewcomments.map((comment, index) => (
               <article
                 key={comment.id}
-                commentIndex={index}
+                commentindex={index}
                 className="p-2 mb-2 text-base break-words bg-white border-b  w-[100%]"
               >
                 <footer className=" items-center mb-2">
                   <div className="flex items-center">
-                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                    <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                       <img
                         className="mr-2 w-6 h-6 rounded-full"
                         src={comment.user.profile_picture}
                         alt="Michael Gough"
                       />
                       <p className="text-cyan-600">{comment.user.name}</p>
-                    </p>
+                    </div>
                     <p className="text-[12px] text-orange-400 dark:text-gray-400">
                       <time
                         pubdate=""
@@ -201,13 +188,14 @@ const Commnetspop = ({ comments, onClose, image_id,image }) => {
                           d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
                         />
                       </svg>
-
-                      <button
-                        onClick={() => handleDeleteComment(comment.id)}
-                        className="text-blue-600"
-                      >
-                        Delete
-                      </button>
+                      <div onClick={rerend}>
+                        <div
+                          onClick={() => handleDeleteComment(comment.id)}
+                          className="text-blue-600"
+                        >
+                          Delete
+                        </div>
+                      </div>
                     </button>
                   </div>
                 )}

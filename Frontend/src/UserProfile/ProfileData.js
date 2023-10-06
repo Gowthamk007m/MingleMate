@@ -73,6 +73,19 @@ const ProfileData = () => {
       console.error("Error fetching profile:", error);
     }
   };
+
+
+  const profileUpdate = async () => {
+    try {
+      const response = await fetch(`/Api/api/${id}`);
+      const data = await response.json();
+      setImages(data.images);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
+
   const DeleteProfile = async (imageId) => {
     try {
       const response = await fetch(`/Api/api/${imageId}`, {
@@ -205,6 +218,7 @@ const ProfileData = () => {
                     image_id={image.id}
                     onDelete={DeleteProfile}
                     profile={profile}
+                    update={profileUpdate}
                   />
                 ))}
               </div>

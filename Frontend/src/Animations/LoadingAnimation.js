@@ -1,5 +1,5 @@
 import React from "react";
-import { InfinitySpin, Oval, Triangle, Vortex } from "react-loader-spinner";
+import { Vortex } from "react-loader-spinner";
 import { Spinner } from "flowbite-react";
 
 function LoadingSpinner({ height, width, color }) {

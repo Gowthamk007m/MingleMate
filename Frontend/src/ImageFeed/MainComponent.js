@@ -13,6 +13,9 @@ const profile = useMemo(() => user.userprofile, []);
     fetchData();
   }, [rerender]);
 
+
+
+
   const fetchData = () => {
     axios
       .get("/Api/image/", {
@@ -49,7 +52,7 @@ const profile = useMemo(() => user.userprofile, []);
           comments={imagePost.comments}
           profile={profile}
           image_id={imagePost}
-          rerender={rerender}
+          rerender={fetchData}
         />
       ))}
     </div>

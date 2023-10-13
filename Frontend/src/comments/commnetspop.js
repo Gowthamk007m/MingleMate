@@ -97,6 +97,9 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
         <div className="relative  border-2 border-grey px-2 w-[100%] max-h-[40%] lg:w-[50%] lg:max-h-full">
           <img
             src={`https://minglemate.pythonanywhere.com${image}`}
+            onError={(e) => {
+              e.target.src = image; // Use the local image URL as a fallback
+            }}
             className="flex  h-full   lg:h-full object-contain w-full align-middle justify-center bg-white  rounded-sm"
           />
         </div>

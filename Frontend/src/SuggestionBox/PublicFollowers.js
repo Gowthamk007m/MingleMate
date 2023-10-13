@@ -19,11 +19,14 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`/Api/follow_test/${id}`, {
-        headers: {
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/follow_test/${id}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + String(authTokens.access),
+          },
+        }
+      );
       const data = await response.json();
 
       if (response.status === 200) {
@@ -46,14 +49,17 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
 
   const handleFollow = async () => {
     try {
-      const response = await fetch(`/Api/follow_test/${id}/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-        body: JSON.stringify({}),
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/follow_test/${id}/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + String(authTokens.access),
+          },
+          body: JSON.stringify({}),
+        }
+      );
       const data = await response.json();
       if (response.status === 200) {
         setFollowStatus("following");
@@ -62,7 +68,7 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
         setFollowersDetails(data.followers_Details);
         setFollowingDetails(data.following_Details);
 
-        console.log("response following", data.followers_Details);
+        // console.log("response following", data.followers_Details);
       } else if (response.status === 201) {
         setFollowStatus("Follow");
         SetFollowersCount(data.followers_count);
@@ -70,7 +76,7 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
         setFollowersDetails(data.followers_Details);
         setFollowingDetails(data.following_Details);
 
-        console.log("response2 notfollowing", data.followers_Details);
+        // console.log("response2 notfollowing", data.followers_Details);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -89,7 +95,7 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
     <div className=" flex flex-col items-center lg:flex-row ">
       <button
         onClick={handleFollow}
-        className="flex m-2 items-center text-center bg-[#7ED6D8] text-black hover:bg-green-500 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100"
+        className="flex m-2 items-center text-center bg-[#7ED6D8] text-black hover:bg-green-500 px-4 py-2 rounded text-sm space-x-2 transition duration-100"
       >
         <span className="capitalize ">{followStatus}</span>
       </button>

@@ -35,7 +35,7 @@ const ProfileImage = ({ image, onDelete, index, profile,update }) => {
       setShowConfirmation(false);
     };
 const commentLength = image.comments.length;
-console.log("com", commentLength);
+// console.log("com", commentLength);
     return (
       <div key={index} className={`${styles["image-container"]}`} onClick={update}>
         <div className={`${styles["image-wrapper"]}`}>

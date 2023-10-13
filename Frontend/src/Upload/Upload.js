@@ -43,9 +43,12 @@ const Upload = () => {
     formData.append("user", Currentuser);
 
     try {
-      const response = await axios.post("/Api/upload/", formData);
+      const response = await axios.post(
+        "https://minglemate.pythonanywhere.com/Api/upload/",
+        formData
+      );
 
-      console.log("Response from server:", response.data);
+      // console.log("Response from server:", response.data);
 
       setCaption("");
       setImageFile(null);
@@ -65,22 +68,22 @@ const Upload = () => {
               aria-label="File Upload Modal"
               className="relative h-full flex flex-col bg-white shadow-xl rounded-md"
             >
-              <section className="h-full overflow-auto p-8 w-full h-full flex flex-col">
+              <section className="h-full overflow-auto p-8 w-full  flex flex-col">
                 <label
                   for="helper-text"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your File
                 </label>
 
-                <div class="flex items-center justify-center w-full">
+                <div className="flex items-center justify-center w-full">
                   <label
                     for="dropzone-file"
-                    class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
-                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <svg
-                        class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                        className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -88,24 +91,24 @@ const Upload = () => {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           stroke-width="2"
                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
                       </svg>
-                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        <span class="font-semibold">Click to upload</span> or
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">Click to upload</span> or
                         drag and drop
                       </p>
-                      <p class="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
                         SVG, PNG, JPG or GIF (MAX. 800x400px)
                       </p>
                     </div>
                     <input
                       id="dropzone-file"
                       type="file"
-                      class="hidden"
+                      className="hidden"
                       accept="image/*"
                       onChange={handleImageChange}
                     />
@@ -114,7 +117,7 @@ const Upload = () => {
 
                 <label
                   for="helper-text"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your Caption
                 </label>
@@ -122,9 +125,9 @@ const Upload = () => {
                   type="text"
                   id="helper-text"
                   aria-describedby="helper-text-explanation"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Caption in here..."
-                  value={caption}
+                  value={caption||""}
                   onChange={handleCaptionChange}
                 />
 
@@ -134,7 +137,7 @@ const Upload = () => {
                 <ul id="gallery" className="flex flex-1 flex-wrap -m-1">
                   <li
                     id="empty"
-                    className="h-full w-full text-center flex flex-col items-center justify-center items-center"
+                    className="h-full w-full text-center flex flex-col  justify-center items-center"
                   >
                     {previewImage ? (
                       <div className="">

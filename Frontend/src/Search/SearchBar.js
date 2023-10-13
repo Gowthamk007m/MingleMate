@@ -14,7 +14,7 @@ const SearchBar = () => {
 
   const data = <UserFollowers />;
   useEffect(() => {
-    fetch("/Api/user-accounts/", {
+    fetch("https://minglemate.pythonanywhere.com/Api/user-accounts/", {
       headers: {
         Authorization: "Bearer " + String(authTokens.access),
       },
@@ -27,7 +27,7 @@ const SearchBar = () => {
       })
       .then((data) => {
         setUsernames(data); // Since data is an array of user account objects
-        console.log("Usernames:", data);
+        // console.log("Usernames:", data);
       })
       .catch((error) => {
         console.error("Error fetching usernames:", error);
@@ -66,7 +66,10 @@ const SearchBar = () => {
 
             {searchText && filteredUsernames.length > 0
               ? filteredUsernames.map((username, index) => (
-                  <div className="w-full flex p-3 pl-4 items-center  hover:bg-gray-300 rounded-lg cursor-pointer">
+                  <div
+                    className="w-full flex p-3 pl-4 items-center  hover:bg-gray-300 rounded-lg cursor-pointer"
+                    key={username.id}
+                  >
                     <div className="mr-4 ">
                       <div className="h-9 w-9 rounded-sm lg:h-14 lg:w-14  flex  items-center justify-center text-3xl">
                         <img
@@ -82,7 +85,6 @@ const SearchBar = () => {
                         pathname: `/profile/${username.id}`,
                         state: { prevLocation: location },
                       }}
-                      key={index}
                     >
                       <div>
                         <div className="font-bold text-lg">{username.name}</div>

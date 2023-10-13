@@ -23,16 +23,19 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
-    let response = await fetch("/Api/token/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: e.target.username.value,
-        password: e.target.password.value,
-      }),
-    });
+    let response = await fetch(
+      "https://minglemate.pythonanywhere.com/Api/token/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: e.target.username.value,
+          password: e.target.password.value,
+        }),
+      }
+    );
 
     if (response.status === 200) {
       let data = await response.json();
@@ -57,26 +60,27 @@ export const AuthProvider = ({ children }) => {
       if (loading) {
         setLoading(false);
       }
-      let response = await fetch("/Api/token/refresh/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          refresh: authTokens?.refresh,
-        }),
-      });
+      let response = await fetch(
+        "https://minglemate.pythonanywhere.com/Api/token/refresh/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            refresh: authTokens?.refresh,
+          }),
+        }
+      );
       let data = await response.json();
 
       if (response.status === 200) {
         setAuthTokens(data);
         setUser(jsw_decode(data.access));
         localStorage.setItem("authTokens", JSON.stringify(data));
-      } else {
-        logoutUser();
-      }
-    } catch (error) {
-      console.error("Error refreshing token:", error);
+      } 
+    } catch {
+      // console.error("Error refreshing token:", error);
       logoutUser();
     }
   };

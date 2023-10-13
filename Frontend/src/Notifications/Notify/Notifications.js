@@ -13,7 +13,7 @@ const Notifications = ({ FollowersData, close, status, user, log_user }) => {
   }, []);
 
   const get_data = async () => {
-    let response = await fetch("/Api/notifications", {
+    let response = await fetch("https://minglemate.pythonanywhere.com/Api/notifications/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,11 +22,9 @@ const Notifications = ({ FollowersData, close, status, user, log_user }) => {
     });
 
     let data = await response.json();
-    console.log("data", data);
     if (response.status === 200) {
       setNotifications(data);
     } else {
-      console.log("error");
     }
   };
 

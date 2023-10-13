@@ -32,7 +32,7 @@ const Followlist = () => {
 
   const fetchData = () => {
     axios
-      .get("/Api/follow_suggestion/", {
+      .get("https://minglemate.pythonanywhere.com/Api/follow_suggestion/", {
         headers: {
           Authorization: "Bearer " + String(authTokens.access),
         },
@@ -40,7 +40,7 @@ const Followlist = () => {
       .then((res) => {
         const data = res.data;
         setUserData(data);
-        console.log("This is suggestion data", data);
+        // console.log("This is suggestion data", data);
       })
       .catch((err) => {
         console.error(err);

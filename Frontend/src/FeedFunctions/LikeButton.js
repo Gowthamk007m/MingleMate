@@ -19,12 +19,15 @@ const LikeButton = ({ image_id, profile, likeCount,from_pro }) => {
 
   const fetchLikedStatus = async () => {
     try {
-      const response = await fetch(`/Api/liked-by/${image_id.id}/`, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + authTokens.access,
-        },
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/liked-by/${image_id.id}/`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + authTokens.access,
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -41,14 +44,17 @@ const LikeButton = ({ image_id, profile, likeCount,from_pro }) => {
 
 const handleLikeToggle = async () => {
   try {
-    const response = await fetch(`/Api/like-post/${image_id.id}/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + authTokens.access,
-      },
-      body: JSON.stringify({}),
-    });
+    const response = await fetch(
+      `https://minglemate.pythonanywhere.com/Api/like-post/${image_id.id}/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + authTokens.access,
+        },
+        body: JSON.stringify({}),
+      }
+    );
 
     if (response.ok) {
       // Fetch the updated liked status from the server

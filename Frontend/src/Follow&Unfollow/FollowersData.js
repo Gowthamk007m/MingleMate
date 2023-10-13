@@ -6,7 +6,6 @@ import FollowStatus from "./FollowStatus";
 import { Link } from "react-router-dom";
 
 const CardWithList = ({ FollowersData, close, status, user, log_user }) => {
-  console.log("Reaching", FollowersData, status);
 
   return (
     <>
@@ -68,9 +67,9 @@ const CardWithList = ({ FollowersData, close, status, user, log_user }) => {
                         >
                           {log_user.username ===
                           follower.user_id_data.username ? (
-                            <div>You</div>
+                            <span>You</span>
                           ) : (
-                            <a>{follower.user_id_data.username}</a>
+                            <span>{follower.user_id_data.username}</span>
                           )}
                         </Link>
                       </p>
@@ -155,11 +154,11 @@ const CardWithList = ({ FollowersData, close, status, user, log_user }) => {
                         >
                           {log_user.username ===
                           follower.following_user_id_data.username ? (
-                            <div>You</div>
+                            <span>You</span>
                           ) : (
-                            <div>
+                            <span>
                               {follower.following_user_id_data.username}
-                            </div>
+                            </span>
                           )}
                         </Link>
                       </p>

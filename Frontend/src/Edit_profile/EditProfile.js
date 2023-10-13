@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import styles from './Edit.module.css'
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({ userId,close }) => {
   const [profilePicture, setProfilePicture] = useState(null);
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
   const { user, authTokens } = useContext(AuthContext);
+  const navigate=useNavigate()
+
 
   const handleUpdate = async () => {
     const formData = new FormData();
@@ -22,26 +25,24 @@ if (bio !== null) {
   formData.append("bio", bio);
 }
     try {
-      console.log("userid", user.user_id);
-      const response = await fetch(`/Api/update_profile/${user.user_id}/`, {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/update_profile/${user.user_id}/`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + String(authTokens.access),
+          },
+          body: formData,
+        }
+      );
 
       if (response.status === 200) {
+
+        navigate(`/profile/${user.user_id}`);
         // Profile updated successfully
         // You can perform any necessary actions here
   
-        console.log("work")
-      } else {
-
-
-               console.log("not work");
-
-      }
+      } 
     } catch (error) {
       console.error("Error:", error);
     }

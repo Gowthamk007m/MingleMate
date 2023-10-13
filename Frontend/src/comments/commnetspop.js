@@ -13,7 +13,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   const [imageData, setImageData] = useState({});
   const [from_com, setfrom_com] = useState([]);
   const [com_len, setcom_len] = useState("loading");
-  const apiEndpoint = `/Api/comments/${image_id}/`;
+  const apiEndpoint = `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`;
 
   const fetchData = async () => {
     try {
@@ -23,12 +23,12 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
         },
       });
       setComments(response.data.comment);
-      console.log("usercomment", response.data.comment);
+      // console.log("usercomment", response.data.comment);
       setImageData(response.data.images);
 
       setcom_len(response.data.comment.length);
 
-      console.log("commnets", response.data.comment);
+      // console.log("commnets", response.data.comment);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -37,7 +37,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   const handleSubmitComment = async (e) => {
     e.preventDefault();
 
-    const apiEndpoint = `/Api/comments/${image_id}/`;
+    const apiEndpoint = `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`;
 
     const commentData = {
       image_post: image_id,
@@ -50,10 +50,11 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
           Authorization: "Bearer " + authTokens.access,
         },
       });
-      console.log("Comment posted successfully!");
       setNewComment("");
 
-      const response = await axios.get(`/Api/comments/${image_id}/`);
+      const response = await axios.get(
+        `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`
+      );
       setComments(response.data.comment);
     } catch (error) {
       console.error("Error posting comment:", error);
@@ -61,7 +62,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   };
   const handleDeleteComment = async (commentId) => {
     try {
-      const apiEndpoint = `/Api/comments_delete/${commentId}/`;
+      const apiEndpoint = `https://minglemate.pythonanywhere.com/Api/comments_delete/${commentId}/`;
 
       await axios.delete(apiEndpoint, {
         headers: {
@@ -69,9 +70,10 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
         },
       });
 
-      console.log("Comment deleted successfully!");
 
-      const response = await axios.get(`/Api/comments/${image_id}/`);
+      const response = await axios.get(
+        `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`
+      );
       setComments(response.data.comment);
       setfrom_com(from_com + 1);
     } catch (error) {
@@ -100,7 +102,6 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
         </div>
 
         <div className="relative flex-col flex-wrap overflow-y-scroll w-[100%]  lg:w-[50%]   ">
-
           <div className="w-full  flex-col justify-center ">
             <div className="border-2 mb-2 px-2">
               <h2 className=" lg:text-2xl text-lg font-bold text-gray-900 dark:text-white">
@@ -149,6 +150,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
                         className="mr-2 w-6 h-6 rounded-full"
                         src={comment.user.profile_picture}
                         alt="Michael Gough"
+                        loading="lazy"
                       />
                       <p className="text-cyan-600">{comment.user.name}</p>
                     </div>

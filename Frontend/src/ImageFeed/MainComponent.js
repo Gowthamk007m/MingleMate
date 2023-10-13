@@ -18,7 +18,7 @@ const profile = useMemo(() => user.userprofile, []);
 
   const fetchData = () => {
     axios
-      .get("/Api/image/", {
+      .get("https://minglemate.pythonanywhere.com/Api/image/", {
         headers: {
           Authorization: "Bearer " + String(authTokens.access), // Replace 'your-authentication-token' with the actual token
         },
@@ -26,19 +26,21 @@ const profile = useMemo(() => user.userprofile, []);
       .then((res) => {
         const data = res.data;
         setImagePosts(data);
-        console.log("commnets",data);
-
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  const navigate = useNavigate();
-
-   if (imagePosts.length === 0) {
-     navigate('/suggestion')
-   }
+//   const navigate = useNavigate();
+//   const nav = () => {
+//   if (imagePosts.length === 0) {
+//     navigate("/suggestion");
+//   }
+// }
+//    if (imagePosts.length === 0) {
+//      nav()
+//    }
 
   return (
     <div className="mt-20 lg:mt-5">

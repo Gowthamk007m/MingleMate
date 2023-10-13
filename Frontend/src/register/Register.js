@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./RegistrationForm.module.css";
+import { Link } from "react-router-dom";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +21,9 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     axios
-      .post("/Api/register/", formData)
+      .post("https://minglemate.pythonanywhere.com/Api/register/", formData)
       .then((response) => {
         // Handle successful registration (e.g., show success message)
-        console.log("Registration successful:", response.data);
         window.location = "/login/";
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
         rel="stylesheet"
       />
       <div className="min-h-screen flex items-center justify-center">
-        <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+        <div className="max-w-md px-2 w-full p-6 bg-white rounded-lg shadow-lg">
           <div className="flex justify-center mb-8">
             <a className="text-[35px]">𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮</a>
           </div>
@@ -155,9 +155,9 @@ const RegistrationForm = () => {
           <div className="text-center">
             <p className="text-sm">
               Already have an account?
-              <a href="/login" className="text-cyan-600">
+              <Link to="/login" className="text-cyan-600">
                 Login
-              </a>
+              </Link>
             </p>
           </div>
           <p className="text-xs text-gray-600 text-center mt-8">© Instagram</p>

@@ -16,11 +16,14 @@ const FollowStatus = ({id}) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`/Api/follow_test/${id}`, {
-        headers: {
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/follow_test/${id}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + String(authTokens.access),
+          },
+        }
+      );
       const data = await response.json();
 
       if (response.status === 200) {
@@ -39,21 +42,23 @@ const FollowStatus = ({id}) => {
 
   const handleFollow = async () => {
     try {
-      const response = await fetch(`/Api/follow_test/${id}/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-        body: JSON.stringify({}),
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/follow_test/${id}/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + String(authTokens.access),
+          },
+          body: JSON.stringify({}),
+        }
+      );
       const data = await response.json();
       if (response.status === 200) {
         setFollowStatus("Following");
         SetFollowersCount(data.followers_count);
         SetFollowingCount(data.following_count);
 
-        console.log("response", data);
       } else if (response.status === 201) {
         setFollowStatus("Follow");
         SetFollowersCount(data.followers_count);

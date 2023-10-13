@@ -30,7 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -95,7 +94,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=50),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -120,7 +119,7 @@ SIMPLE_JWT = {
     "JTI_CLAIM": "jti",
 
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=100),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 
     "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
@@ -165,7 +164,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 # settings.py
 
-import os
 
 # Static URL for CSS, JavaScript, and other static files
 STATIC_URL = '/static/'
@@ -186,18 +184,18 @@ STATICFILES_DIRS = [
 ]
 
 
-
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
+    'https://minglemate.netlify.app',
     'http://localhost:3000',
     # Add other allowed origins as needed
 ]
-rest_framework= {'DEFAULT_PERMISSIONS_CLASSES':{'rest_framework.permissions.AllowAny'}}
-CORS_ORGIN_ALLOW_ALL=True
+rest_framework = {'DEFAULT_PERMISSIONS_CLASSES': {
+    'rest_framework.permissions.AllowAny'}}
+CORS_ORGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    "https://minglemate.netlify.app",
     # Add more allowed origins if needed
 ]

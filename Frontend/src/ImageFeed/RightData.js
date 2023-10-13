@@ -20,7 +20,6 @@ const RightData = ({
 }) => {
   const userId = userAccount;
   const [showAllComments, setShowAllComments] = useState(false);
-  console.log("UserAccount", comments);
 
   const [From_pro, setFrom_pro] = useState(true);
 

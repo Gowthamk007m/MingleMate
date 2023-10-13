@@ -7,6 +7,7 @@ import PublicFollowers from "../SuggestionBox/PublicFollowers";
 import UserFollowers from "../SuggestionBox/UserFollowers";
 import EditProfile from "../Edit_profile/EditProfile";
 import FollowersData from "../Follow&Unfollow/FollowersData";
+import Animation from "../Animations/LoadingAnimation";
 
 const ProfileData = () => {
   const { id } = useParams();
@@ -58,13 +59,17 @@ const ProfileData = () => {
   const LoadingAnimation = () => (
     <div className={styles["loading-container"]}>
       <div className={styles["loading-animation"]} />
-      <div>Loading...</div>
+      <div>
+        <Animation.LoadingOval />
+      </div>
     </div>
   );
 
   const getProfile = async () => {
     try {
-      const response = await fetch(`/Api/api/${id}`);
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/api/${id}/`
+      );
       const data = await response.json();
       setProfile(data.profile);
       setImages(data.images);
@@ -74,10 +79,11 @@ const ProfileData = () => {
     }
   };
 
-
   const profileUpdate = async () => {
     try {
-      const response = await fetch(`/Api/api/${id}`);
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/api/${id}/`
+      );
       const data = await response.json();
       setImages(data.images);
     } catch (error) {
@@ -85,18 +91,22 @@ const ProfileData = () => {
     }
   };
 
-
   const DeleteProfile = async (imageId) => {
     try {
-      const response = await fetch(`/Api/api/${imageId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://minglemate.pythonanywhere.com/Api/api/${imageId}/`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 204) {
-        const responseProfile = await fetch(`/Api/api/${id}`);
+        const responseProfile = await fetch(
+          `https://minglemate.pythonanywhere.com/Api/api/${id}/`
+        );
         const data = await responseProfile.json();
         setProfile(data.profile);
         setImages(data.images);
@@ -104,7 +114,7 @@ const ProfileData = () => {
 
         // console.log("Profile and images updated:", data);
       } else {
-        console.log("Failed to delete image");
+        // console.log("Failed to delete image");
       }
     } catch (error) {
       console.error("Error deleting image:", error);

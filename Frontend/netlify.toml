@@ -8,3 +8,8 @@
   # Directory where the built files are located after the build process
   publish = "build"
 
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

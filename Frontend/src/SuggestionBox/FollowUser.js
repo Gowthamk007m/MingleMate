@@ -7,14 +7,14 @@ const FollowUser = ({ userId, profile }) => {
 
   const { isFollowing, handleFollowToggle } = useFollowUser(userId.id);
   const isCurrentUser = profile.id === userId.id;
-  console.log(
-    "user",
-    user.user_id,
-    "user2",
-    userId.id,
-    "profile",
-    profile.id
-  );
+  // console.log(
+  //   "user",
+  //   user.user_id,
+  //   "user2",
+  //   userId.id,
+  //   "profile",
+  //   profile.id
+  // );
 
   if (isCurrentUser) {
     return null;

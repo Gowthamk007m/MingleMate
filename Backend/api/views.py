@@ -483,12 +483,12 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        user_account = User_Account.objects.get(user=user)
+        user_account = User.objects.get(user=user)
         token['username'] = user.username
         token['userprofile'] = {
             'id': user.id,  # type: ignore
-            'name': user_account.name,
-            'email': user_account.email,
+            'name': user.name,
+            'email': user.email,
         }
         return token
 
@@ -497,7 +497,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@login_required
+# @login_required
 @api_view(['GET'])
 def Get_data(request):
     route = [

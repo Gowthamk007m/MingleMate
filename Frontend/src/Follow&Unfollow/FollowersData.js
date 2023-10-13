@@ -55,7 +55,7 @@ const CardWithList = ({ FollowersData, close, status, user, log_user }) => {
                         alt={follower.name + " image"}
                         className="rounded-full  w-16 h-16"
                         height="24"
-                        src={follower.user_id_data.profile_picture}
+                        src={`https://minglemate.pythonanywhere.com${follower.user_id_data.profile_picture}`}
                         width="24"
                       />
                     </div>
@@ -141,7 +141,7 @@ const CardWithList = ({ FollowersData, close, status, user, log_user }) => {
                         alt={follower.name + " image"}
                         className="rounded-full  w-16 h-16"
                         height="32"
-                        src={follower.following_user_id_data.profile_picture}
+                        src={`https://minglemate.pythonanywhere.com${follower.following_user_id_data.profile_picture}`}
                         // Replace with the desired image URL
                         width="32"
                       />

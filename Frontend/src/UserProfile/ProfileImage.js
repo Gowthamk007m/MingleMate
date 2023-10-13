@@ -37,7 +37,11 @@ const ProfileImage = ({ image, onDelete, index, profile,update }) => {
 const commentLength = image.comments.length;
 // console.log("com", commentLength);
     return (
-      <div key={index} className={`${styles["image-container"]}`} onClick={update}>
+      <div
+        key={index}
+        className={`${styles["image-container"]}`}
+        onClick={update}
+      >
         <div className={`${styles["image-wrapper"]}`}>
           <Suspense
             fallback={
@@ -47,7 +51,7 @@ const commentLength = image.comments.length;
             }
           >
             <LazyImage
-              src={image.image}
+              src={`https://minglemate.pythonanywhere.com${image.image}`}
               className={`${styles["h-auto max-w-full rounded-3xl"]} ${styles["image"]}`}
             />
           </Suspense>
@@ -90,7 +94,7 @@ const commentLength = image.comments.length;
                           <path d="M0 0h24v24H0V0z" fill="none" />
                           <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
                         </svg>
-                        <p >{commentLength}</p>
+                        <p>{commentLength}</p>
                       </div>
                     )}
                   </div>

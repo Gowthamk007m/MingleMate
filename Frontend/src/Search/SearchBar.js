@@ -74,7 +74,7 @@ const SearchBar = () => {
                       <div className="h-9 w-9 rounded-sm lg:h-14 lg:w-14  flex  items-center justify-center text-3xl">
                         <img
                           className="rounded-full object-cover h-9 w-9 lg:w-14 lg:h-14"
-                          src={username.profile_picture}
+                          src={`https://minglemate.pythonanywhere.com${username.profile_picture}`}
                           alt={username.name}
                         />
                       </div>

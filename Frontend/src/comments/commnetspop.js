@@ -96,7 +96,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
       <div className="popup-content flex flex-col w-[90%] h-4/5 lg:h-[80%]  md:flex-row">
         <div className="relative  border-2 border-grey px-2 w-[100%] max-h-[40%] lg:w-[50%] lg:max-h-full">
           <img
-            src={image}
+            src={`https://minglemate.pythonanywhere.com${image}`}
             className="flex  h-full   lg:h-full object-contain w-full align-middle justify-center bg-white  rounded-sm"
           />
         </div>
@@ -148,7 +148,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
                     <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                       <img
                         className="mr-2 w-6 h-6 rounded-full"
-                        src={comment.user.profile_picture}
+                        src={`https://minglemate.pythonanywhere.com${comment.user.profile_picture}`}
                         alt="Michael Gough"
                         loading="lazy"
                       />

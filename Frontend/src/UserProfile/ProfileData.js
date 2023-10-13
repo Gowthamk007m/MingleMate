@@ -163,7 +163,7 @@ const ProfileData = () => {
                 <div className="flex flex-col items-center -mt-20">
                   {profile.profile_picture ? (
                     <img
-                      src={profile.profile_picture}
+                      src={`https://minglemate.pythonanywhere.com${profile.profile_picture}`}
                       alt=""
                       className="w-40 h-40 border-4 object-cover border-white rounded-full"
                     />

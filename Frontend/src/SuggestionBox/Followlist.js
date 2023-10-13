@@ -95,7 +95,7 @@ const Followlist = () => {
                             alt={user.name + " image"}
                             className="rounded-full  w-16 h-16"
                             height="24"
-                            src={user.profile_picture}
+                            src={`https://minglemate.pythonanywhere.com${user.profile_picture}`}
                             width="24"
                           />
                         </div>

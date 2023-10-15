@@ -92,7 +92,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   }, [newComment, from_com]);
 
   return (
-    <div className="popup-overlay" onClick={handleOutsideClick}>
+    <div className="popup-overlay">
       <div className="popup-content flex flex-col w-[90%] h-4/5 lg:h-[80%]  md:flex-row">
         <div className="relative  border-2 border-grey px-2 w-[100%] max-h-[40%] lg:w-[50%] lg:max-h-full">
           <img
@@ -211,6 +211,29 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
           {/* </section> */}
         </div>
 
+        <div
+          onClick={onClose}
+          type="button"
+          className="absolute right-8 top-7 ml-auto -mx-1.5 -my-1.5  bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+          data-dismiss-target="#toast-default"
+          aria-label="Close"
+        >
+          <svg
+            className="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="red"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </div>
         {/* <button onClick={onClose}>Close</button> */}
       </div>
     </div>

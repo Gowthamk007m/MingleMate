@@ -50,7 +50,7 @@ const SearchBar = () => {
   return (
     <>
       {/* component */}
-      <div className="fixed top-[12%]  left-0 lg:left-[16%] overflow-hidden w-full lg:w-[80%] h-full lg:top-[2%] z-40 select-none">
+      <div className="fixed top-[12%]  left-0 lg:left-[16%] overflow-hidden w-[100%] lg:w-[80%] h-full lg:top-[2%] md:left-[5rem] md:w-[80%] z-40 select-none">
         <div className="w-full max-h-full lg:w-4/6 lg:max-h-full z-50 relative mx-auto  border rounded-2xl p-2 ">
           <div className="bg-white w-full h-16 rounded-xl mb-3 shadow-lg p-2">
             <input

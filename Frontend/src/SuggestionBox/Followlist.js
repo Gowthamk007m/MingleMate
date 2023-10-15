@@ -55,7 +55,7 @@ const Followlist = () => {
   );
 
   return (
-    <div className="relative  top-20 p-1 w-full rounded-lg h-[calc(100vh-74px)] lg:left-[17%]  lg:h-full lg:w-[80%] lg:top-1 bg-gray-200 lg:p-8">
+    <div className="relative px-4  top-20 p-1 w-full rounded-lg h-[calc(100vh-74px)] lg:left-[17%] md:left-[5rem] md:w-[89%]  lg:h-full lg:w-[80%] lg:top-1 bg-gray-200 lg:p-8">
       {imagesLoaded ? (
         <Card className="relative flex justify-center top-2 mt-5 sm:relative  sm:w-full right-1 ">
           <div className="mb-4 flex items-center justify-between ">
@@ -93,7 +93,7 @@ const Followlist = () => {
                         <div className="shrink-0">
                           <img
                             alt={user.name + " image"}
-                            className="rounded-full  w-16 h-16"
+                            className="rounded-full w-12 h-12  lg:w-16 lg:h-16"
                             height="24"
                             src={`https://minglemate.pythonanywhere.com${user.profile_picture}`}
                             width="24"

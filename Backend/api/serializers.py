@@ -6,9 +6,17 @@ from django.contrib.auth.password_validation import validate_password
 
 
 class UserAccountSerializer(serializers.ModelSerializer):
+    notification_count=serializers.SerializerMethodField()
     class Meta:
         model = User_Account
-        fields = ['id', 'name', 'email', 'profile_picture', 'bio']
+        fields = ['id', 'name', 'email', 'profile_picture', 'bio','notification_count']
+
+    def get_notification_count(self, user):
+        try:
+            notification_count = Notification.objects.filter(user=user.id, is_read=False).count()
+            return notification_count
+        except Notification.DoesNotExist:
+            return 0
 
 
 class UserAccountSerializer_for_followers(serializers.ModelSerializer):

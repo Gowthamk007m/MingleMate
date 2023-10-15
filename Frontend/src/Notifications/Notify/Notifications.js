@@ -41,7 +41,7 @@ const get_data = async () => {
 };
 
   return (
-    <div className="relative  top-20 p-1 w-full rounded-lg h-[calc(100vh-74px)] lg:left-[17%]  lg:h-full lg:w-[80%] lg:top-1 bg-gray-200 lg:p-8">
+    <div className="relative  top-20 p-1 w-full rounded-lg h-[calc(100vh-74px)]  md:left-[5rem] md:w-[89%] md:top-1 lg:left-[17%]  lg:h-full lg:w-[80%] lg:top-1 bg-gray-200 lg:p-8">
       {notification ? (
         <Card className="relative flex w-[100%] justify-center top-2 mt-5 sm:relative  sm:w-full overflow-y-scroll  ">
           <div className="mb-4 flex items-center justify-between ">
@@ -49,30 +49,7 @@ const get_data = async () => {
               Notifications
             </h5>
             <a className=" font-medium text-green-600 " href="#">
-              <div
-                // onClick={close}
-                type="button"
-                className="ml-auto -mx-1.5 -my-1.5 float-right bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                data-dismiss-target="#toast-default"
-                aria-label="Close"
-              >
-                <span className="sr-only">Close</span>
-                <svg
-                  className="w-3 h-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 14"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                  />
-                </svg>
-              </div>
+           
               <p className="relative bottom-0.5 float-right from-neutral-700"></p>
             </a>
           </div>
@@ -89,7 +66,7 @@ const get_data = async () => {
                       <div className="shrink-0">
                         <img
                           alt={notify.user_account.name}
-                          className="rounded-full  w-16 h-16"
+                          className="rounded-full w-10 h-10 lg:w-16 lg:h-16"
                           height="24"
                           src={`https://minglemate.pythonanywhere.com${notify.action_user_data.profile_picture}`}
                           width="24"
@@ -99,7 +76,7 @@ const get_data = async () => {
                         <p className=" text-sm font-medium text-gray-900 dark:text-white">
                           {notify.message}
                         </p>
-                        <h5 className="float-right">
+                        <h5 className="float-right text-sm lg:text-lg">
                           {" "}
                           {notify.created_at_formatted}
                         </h5>

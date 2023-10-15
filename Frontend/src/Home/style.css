@@ -72,7 +72,7 @@ body{
 
 /* Reduce the width of the scrollbar */
 ::-webkit-scrollbar {
-  width: 8px; /* Adjust this value as needed */
+  width: 2px; /* Adjust this value as needed */
 }
 
 /* Customize the scrollbar track */

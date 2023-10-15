@@ -65,7 +65,7 @@ const RightData = ({
     renderRandomComment()
   },[rerender])
   return (
-    <div className=" rounded overflow-hidden mt-2  border w-full lg:w-6/12 md:w-6/12 bg-white mx-0 md:mx-0 lg:mx-0">
+    <div className=" rounded overflow-hidden mt-2  border w-full lg:w-8/12  bg-white mx-0 md:mx-0 lg:mx-0  md:w-full md:ml-[-4rem]">
       <div className="w-full flex justify-between p-3">
         <div className="flex ">
           <div className="rounded-full h-10 w-10  bg-gray-500 flex items-center justify-center overflow-hidden ">

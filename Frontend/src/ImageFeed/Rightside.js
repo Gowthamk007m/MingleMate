@@ -5,7 +5,7 @@ import "../Home/style.css";
 const Rightside = () => {
   return (
     <div className="lg:mt-0 m-2    " >
-      <div className="md:ml-[25%]">
+      <div className="md:ml-[25%] ">
         <MainComponent />
       </div>
 

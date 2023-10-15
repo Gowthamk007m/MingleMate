@@ -41,7 +41,9 @@ const Sidebar = ({ profile, activeButton, onButtonClick }) => {
       <div className={styles.mainbody}>
         <aside className={styles.sidebar}>
           <header className={styles.sidebar_header}>
-            <a className={styles.logo_img}><p className="text-[25px]">𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮</p></a>
+            <a className={styles.logo_img}>
+              <p className="text-[25px]">𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮</p>
+            </a>
             <i
               className={`logo-icon uil uil-instagram ${styles.logo_icon}`}
             ></i>
@@ -145,6 +147,9 @@ const Sidebar = ({ profile, activeButton, onButtonClick }) => {
                       d="M10 3.464V1.1m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175C17 15.4 17 16 16.462 16H3.538C3 16 3 15.4 3 14.807c0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 10 3.464ZM4 3 3 2M2 7H1m15-4 1-1m1 5h1M6.54 16a3.48 3.48 0 0 0 6.92 0H6.54Z"
                     />
                   </svg>
+                  <span class="absolute -top-2 left-4 rounded-full bg-red-500 p-0.5 px-2 text-sm text-red-50">
+                    {profile.notification_count}
+                  </span>
                 </i>
                 <span>Notifications</span>
               </span>

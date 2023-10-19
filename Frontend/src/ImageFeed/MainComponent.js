@@ -43,20 +43,24 @@ const profile = useMemo(() => user.userprofile, []);
 //    }
 
   return (
-    <div className="mt-20 lg:mt-5">
-      {imagePosts.map((imagePost, index) => (
-        <RightData
-          key={index}
-          userAccount={imagePost.user}
-          image={imagePost.image}
-          likeCount={imagePost.like_count}
-          caption={imagePost.caption}
-          comments={imagePost.comments}
-          profile={profile}
-          image_id={imagePost}
-          rerender={fetchData}
-        />
-      ))}
+    <div className="lg:mt-0 m-2   ">
+      <div className="md:ml-[25%] ">
+        <div className="mt-20 lg:mt-5">
+          {imagePosts.map((imagePost, index) => (
+            <RightData
+              key={index}
+              userAccount={imagePost.user}
+              image={imagePost.image}
+              likeCount={imagePost.like_count}
+              caption={imagePost.caption}
+              comments={imagePost.comments}
+              profile={profile}
+              image_id={imagePost}
+              rerender={fetchData}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

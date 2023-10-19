@@ -119,7 +119,7 @@ class ImagePostSerializerForProfile(serializers.ModelSerializer):
     class Meta:
         model = ImagePost
         fields = ['id', 'image', 'user', 'comments',
-                  'like_count', 'comment_count']
+                  'like_count', 'comment_count','caption','created_at']
 
 
 class ProfileUpdate(serializers.ModelSerializer):

@@ -60,7 +60,6 @@ const Upload = () => {
 
   return (
     <div className="relative mt-20 left-0 w-full lg:w-[80%] lg:mt-1  lg:left-[15%] lg:top-0">
-      <Sidebar></Sidebar>
       <form onSubmit={handleSubmit}>
         <div className=" h-screen  sm:px-8 md:px-16 sm:py-8">
           <main className="container mx-auto max-w-screen-lg h-full shadow-2xl ">

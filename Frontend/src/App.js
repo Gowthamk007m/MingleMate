@@ -13,6 +13,7 @@ import Searchpage from "./Search/SearchPage";
 import CardWithList from "./Follow&Unfollow/FollowersData";
 import Notifications from "./Notifications/Notify/Notifications";
 import Followlist from "./SuggestionBox/Followlist";
+import MainComponent from "./ImageFeed/MainComponent";
 
 function App() {
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
             <Routes>
               <Route element={<PrivateRoutes />}>
                 <Route element={<HomePage />} path="/" exact>
-                  <Route index element={<Rightside />} />
+                  <Route index element={<MainComponent />} />
                   <Route element={<Searchpage />} path="search" />
                   <Route element={<Upload />} path="create" />
                   <Route element={<Notifications />} path="notification" />

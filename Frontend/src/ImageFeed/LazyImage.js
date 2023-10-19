@@ -23,7 +23,7 @@ const LazyImage = ({ from_comment,src, alt, ...restProps }) => {
         {...restProps}
         src={src}
         alt={alt }
-        className="w-full  max-h-[24rem]  object-cover  lg:hover:scale-[104%] duration-500 lg:max-h-[36rem] "
+        className="w-full  max-h-[24rem]  object-contain  lg:hover:scale-[101%] duration-500 lg:max-h-[36rem] "
         onLoad={handleImageLoad}
         loading="lazy" // Enable native lazy loading for modern browsers
       />

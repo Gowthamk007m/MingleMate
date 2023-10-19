@@ -16,7 +16,7 @@ const RightData = ({
   caption,
   profile,
   comments,
-  rerender
+  rerender,
 }) => {
   const userId = userAccount;
   const [showAllComments, setShowAllComments] = useState(false);
@@ -62,10 +62,10 @@ const RightData = ({
   };
 
   useEffect(() => {
-    renderRandomComment()
-  },[rerender])
+    renderRandomComment();
+  }, [rerender]);
   return (
-    <div className=" rounded overflow-hidden mt-2  border w-full lg:w-8/12  bg-white mx-0 md:mx-0 lg:mx-0  md:w-full md:ml-[-4rem]">
+    <div className=" rounded  mt-2  border w-full lg:w-8/12  bg-white mx-0 md:mx-0 lg:mx-0  md:w-full md:ml-[-4rem]">
       <div className="w-full flex justify-between p-3">
         <div className="flex ">
           <div className="rounded-full h-10 w-10  bg-gray-500 flex items-center justify-center overflow-hidden ">
@@ -114,26 +114,31 @@ const RightData = ({
                 aria-labelledby="dropdownMenuIconHorizontalButton"
               >
                 <li>
-                  <div
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    {!isCurrentUser ? (
+                  {!isCurrentUser ? (
+                    <div
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       <FollowStatus id={userAccount.id} />
-                    ) : (
-                      <div>You</div>
-                    )}
-                  </div>
+                    </div>
+                  ) : (
+                    <div
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      You
+                    </div>
+                  )}
                 </li>
                 <li>
-                  <div
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    <Link to={`/profile/${userId.id}`} onClick={handleBack}>
+                  <Link to={`/profile/${userId.id}`} onClick={handleBack}>
+                    <div
+                      href="#"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
                       Profile
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -231,7 +236,7 @@ const RightData = ({
                 image_id={image_id.id}
                 image={image}
                 onClose={() => setShowAllComments(false)}
-                 rerend={rerender}
+                rerend={rerender}
               />,
               document.body
             )}

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FollowStatus from "../Follow&Unfollow/FollowStatus";
 import Animation from "../Animations/LoadingAnimation";
 import { Card } from "flowbite-react";
+import LoadingAnimation from "./../Animations/LoadingAnimation";
 
 const Followlist = () => {
   const [userData, setUserData] = useState([]);
@@ -22,7 +23,6 @@ const Followlist = () => {
     // Simulate fetching images and API requests
     // Once the data is fetched and images are loaded, set imagesLoaded to true
     setTimeout(() => {
-      setImagesLoaded(true);
     }); // Simulated delay, replace with your actual data fetching logic
   }, []);
 
@@ -40,6 +40,8 @@ const Followlist = () => {
       .then((res) => {
         const data = res.data;
         setUserData(data);
+      setImagesLoaded(true);
+
         // console.log("This is suggestion data", data);
       })
       .catch((err) => {

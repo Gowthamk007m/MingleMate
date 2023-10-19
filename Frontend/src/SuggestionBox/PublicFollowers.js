@@ -92,12 +92,16 @@ const PublicFollowers = ({ sendDataToParent, sendDataToParent2 }) => {
   };
 
   return (
-    <div className=" flex flex-col items-center lg:flex-row ">
+    <div className="flex flex-col items-center lg:flex-row">
       <button
         onClick={handleFollow}
         className="flex m-2 items-center text-center bg-[#7ED6D8] text-black hover:bg-green-500 px-4 py-2 rounded text-sm space-x-2 transition duration-100"
       >
-        <span className="capitalize ">{followStatus}</span>
+        <span
+          className="capitalize"
+        >
+          {followStatus === "following" ? "Unfollow" : followStatus}
+        </span>
       </button>
 
       <button

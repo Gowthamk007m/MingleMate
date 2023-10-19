@@ -219,7 +219,7 @@ const ProfileData = () => {
             ) : isEditMode ? (
               <EditProfile userId={id} close={handleFollowerListClose} />
             ) : (
-              <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-2">
                 {images.map((image, index) => (
                   <ProfileImage
                     key={index}

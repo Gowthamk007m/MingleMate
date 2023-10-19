@@ -41,4 +41,17 @@ function LoadingOval2({ height, width, color }) {
   );
 }
 
-export default { LoadingSpinner, LoadingOval, LoadingOval2 };
+
+function LoadingOval3({ height, width, color }) {
+  return (
+    <div
+      style={{
+        width: "25px",
+        height: "30px",
+      }}
+    >
+      <Spinner aria-label="Default status example" />
+    </div>
+  );
+}
+export default { LoadingSpinner, LoadingOval, LoadingOval2, LoadingOval3 };

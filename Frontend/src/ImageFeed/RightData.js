@@ -16,7 +16,7 @@ const RightData = ({
   caption,
   profile,
   comments,
-  rerender,
+  rerender
 }) => {
   const userId = userAccount;
   const [showAllComments, setShowAllComments] = useState(false);
@@ -62,8 +62,8 @@ const RightData = ({
   };
 
   useEffect(() => {
-    renderRandomComment();
-  }, [rerender]);
+    renderRandomComment()
+  },[rerender])
   return (
     <div className=" rounded  mt-2  border w-full lg:w-8/12  bg-white mx-0 md:mx-0 lg:mx-0  md:w-full md:ml-[-4rem]">
       <div className="w-full flex justify-between p-3">

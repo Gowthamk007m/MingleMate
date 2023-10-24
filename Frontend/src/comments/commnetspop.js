@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import LoadingAnimation from "./../Animations/LoadingAnimation";
+import { Link } from "react-router-dom";
 
 const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   const [allnewcomments, setComments] = useState([]);
@@ -16,8 +17,7 @@ const Commnetspop = ({ comments, onClose, image_id, image, rerend }) => {
   const [com_len, setcom_len] = useState(<LoadingAnimation.LoadingOval3 />);
   const apiEndpoint = `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`;
 
-const [isLoadingComments, setIsLoadingComments] = useState(true);
-
+  const [isLoadingComments, setIsLoadingComments] = useState(true);
 
   const fetchData = async () => {
     setIsLoadingComments(true);
@@ -76,7 +76,6 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
         },
       });
 
-
       const response = await axios.get(
         `https://minglemate.pythonanywhere.com/Api/comments/${image_id}/`
       );
@@ -98,7 +97,7 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
   }, [newComment, from_com]);
 
   return (
-    <div className="popup-overlay ">
+    <div className="popup-overlay">
       <div className="popup-content flex flex-col w-[90%] h-4/5 lg:h-[80%]  md:flex-row">
         <div className="relative  border-2 border-grey px-2 w-[100%] max-h-[40%] lg:w-[50%] lg:max-h-full">
           <img
@@ -144,12 +143,10 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
               </form>{" "}
             </div>
           </div>
-
           <div className="relative w-[100%]  border-gray-300 rounded-2xl border-2 left-0 right-0">
             {isLoadingComments ? (
               <LoadingAnimation.LoadingOval2 />
-            ) : (
-              // Show loading animation while comments are loading
+            ) : allnewcomments.length > 0 ? (
               allnewcomments.map((comment, index) => (
                 <article
                   key={comment.id}
@@ -158,16 +155,21 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
                 >
                   <footer className=" items-center mb-2">
                     <div className="flex items-center">
+
+                    <Link to={`/profile/${comment.user.id}`}>
+
                       <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                         <img
-                          className="mr-2 w-6 h-6 rounded-full"
+                          className="mr-2 w-6 h-6 rounded-full border-teal-500 border"
                           src={`https://minglemate.pythonanywhere.com${comment.user.profile_picture}`}
                           alt="Michael Gough"
                           loading="lazy"
                         />
-                        <p className="text-cyan-600">{comment.user.name}</p>
-                      </div>
-                      <p className="text-[12px] text-orange-400 dark:text-gray-400">
+                        <p className="text-sky-700">{comment.user.name}</p>
+                        </div>
+                        </Link>
+
+                      <p className="text-[12px] text-neutral-600 dark:text-gray-400">
                         <time
                           pubdate=""
                           dateTime="2022-02-08"
@@ -216,10 +218,12 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
                   )}
                 </article>
               ))
+            ) : (
+              <p className="text-gray-500 flex justify-center dark:text-gray-400 ">
+                No comments yet !
+              </p>
             )}
           </div>
-
-          {/* </section> */}
         </div>
 
         <div
@@ -249,5 +253,6 @@ const [isLoadingComments, setIsLoadingComments] = useState(true);
     </div>
   );
 };
+
 
 export default Commnetspop;

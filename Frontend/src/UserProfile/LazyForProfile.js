@@ -19,7 +19,7 @@ const LazyImageForProfile = ({ src, alt, ...restProps }) => {
         {...restProps}
         src={src}
         alt={alt || "Lazy-loaded Image"}
-    
+        
         onLoad={handleImageLoad}
         loading="lazy" // Enable native lazy loading for modern browsers
       />

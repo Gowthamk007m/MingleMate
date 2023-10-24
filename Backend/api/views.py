@@ -342,46 +342,59 @@ class FollowAPIView_Test(APIView):
 class LikePostAPIView(APIView):
     def post(self, request, post_id):
         post = get_object_or_404(ImagePost, pk=post_id)
-        user = request.user
+        user = request.user 
+        data_user=request.user 
+           
+        post_username=post.main_user.id
+        action_username=data_user
 
+        post_user = User.objects.get(pk=post_username)
+    
+        print("cadsasd",action_username,'sadfdfq',post_username)
         if user in post.likes.all():
             post.likes.remove(user)
             post.like_count = post.likes.count()
             post.liked_by.remove(user)
             post.save()
+         
+         
+            # Here, you can check if there are any existing notifications related to this unliking action
+            cap = post.caption
+            date=post.created_at
+            formatted_date = date.strftime("%d-%m-%y %H:%M")
+
+            message = f"{user.username} liked your post: '{cap}'" if cap else f"{user.username} liked your post created on '{formatted_date}'"
+
+
             
-            # if post.main_user != user:  
-            #     # Avoid notifying the user about their own like
-            #     cap=post.caption
-            #     if cap!= None:
-            #         message = f"{user.username} liked your post: '{cap}'"
-            #     # Ensure that you provide a valid User object for user_id
-            #         data=Notification.objects.get(user=post.main_user, action_user=user, message=message)
-
-            #         if data:
-            #             data.delete()
-            #     else:
-            #         message = f"{user.username} liked your post"
-            #         data=Notification.objects.get(user=post.main_user, action_user=user, message=message)
-
-            #         if data:
-            #             data.delete()
-
+            try:
+                data = Notification.objects.get(user=post_user, action_user=action_username, message=message)
+                data.delete()
+            except:
+                pass
+        
             return Response({"message": "Post unliked successfully."}, status=status.HTTP_200_OK)
         else:
+            cap = post.caption
+            date=post.created_at
+            formatted_date = date.strftime("%d-%m-%y %H:%M")
+
+            message = f"{user.username} liked your post: '{cap}'" if cap else f"{user.username} liked your post created on '{formatted_date}'"
+
             post.likes.add(user)
             post.like_count = post.likes.count()
             post.liked_by.add(user)
             post.save()
-            print(post.main_user)
-            # Create a like notification
-            # if post.main_user != user:  
-            #     # Avoid notifying the user about their own like
-            #     message = f"{user.username} liked your post: '{post.caption}'"
-            #     # Ensure that you provide a valid User object for user_id
-            #     Notification.objects.create(user=post.main_user, action_user=user, message=message)
+            try:
+                data = Notification.objects.create(user=post_user,action_user=user, message=message)
+                data.save()
+            except:
+                pass
+            
+            # Create notifications for users who liked the post
 
             return Response({"message": "Post liked successfully."}, status=status.HTTP_200_OK)
+
 
     def get(self, request, post_id):
         post = get_object_or_404(ImagePost, pk=post_id)

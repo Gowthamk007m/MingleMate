@@ -31,3 +31,39 @@ def delete_follow_notification(sender, instance, **kwargs):
         notification.delete()
     except Notification.DoesNotExist:
         pass 
+
+@receiver(post_save, sender=Comment)
+def create_comment_notification(sender, instance, created, **kwargs):
+    if created and instance.image_post.user != instance.user:
+        post_username=instance.image_post.main_user.id
+        post_user = User.objects.get(pk=post_username)
+        action_data=instance.user.user.id
+        action_user = User.objects.get(pk=action_data)
+        date=instance.created_at
+        formatted_date = date.strftime("%d-%m-%y %H:%M")
+
+        message = f"{instance.user.name} commented on your post: '{instance.image_post.caption}'" if instance.image_post.caption else f"{instance.user.name} commented on your post created on '{formatted_date}'"
+        Notification.objects.create(user=post_user, action_user=action_user, message=message)
+
+@receiver(post_delete, sender=Comment)
+def delete_comment_notification(sender, instance, **kwargs):
+        date=instance.created_at
+        formatted_date = date.strftime("%d-%m-%y %H:%M")
+        message = f"{instance.user.name} commented on your post: '{instance.image_post.caption}'" if instance.image_post.caption else f"{instance.user.name} commented on your post created on '{formatted_date}'"
+
+        post_username=instance.image_post.main_user.id
+        post_user = User.objects.get(pk=post_username)
+        action_data=instance.user.user.id
+        action_user = User.objects.get(pk=action_data)
+
+        try:
+            notification = Notification.objects.get(
+            user=post_user, action_user=action_user, message=message
+            )
+            notification.delete()
+        except Notification.DoesNotExist:
+            pass 
+
+            message = f"{instance.user.name} commented on your post: '{instance.image_post.caption}'" if instance.image_post.caption else f"{instance.user.name} commented on your post created on '{formatted_date}'"
+
+            Notification.objects.create(user=post_user, action_user=action_user, message=message)

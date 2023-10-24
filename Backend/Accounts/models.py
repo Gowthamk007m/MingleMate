@@ -59,6 +59,8 @@ class ImagePost(models.Model):
 
     def save(self, *args, **kwargs):
         self.user_name = self.user.name
+        self.main_user = self.user.user
+
 
         super().save(*args, **kwargs)
 

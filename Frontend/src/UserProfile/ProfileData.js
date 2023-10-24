@@ -86,6 +86,7 @@ const ProfileData = () => {
       );
       const data = await response.json();
       setImages(data.images);
+      console.error("Error fetching profile:");
     } catch (error) {
       console.error("Error fetching profile:", error);
     }

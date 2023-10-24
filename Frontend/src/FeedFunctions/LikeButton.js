@@ -65,7 +65,6 @@ const LikeButton = ({ image_id, profile, likeCount, from_pro }) => {
         const data = await response.json();
 
         setLikeStatus(data);
-        console.log("likedata",data)
 
         setIsLiked(data.isLiked);
       } else {

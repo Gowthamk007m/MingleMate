@@ -34,7 +34,6 @@ const ProfileImage = ({ image, onDelete, index, profile, update }) => {
   const commentLength = image.comments.length;
   // console.log("com", commentLength);
   useEffect(() => {
-    console.log(showAllComments);
   }, [showAllComments]);
   return (
     <div

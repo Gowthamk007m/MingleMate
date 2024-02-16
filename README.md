@@ -2,7 +2,7 @@
 
 Welcome to the MingleMate social media app! This is a powerful and feature-rich social platform designed to help you connect with friends, share moments, and discover new connections. Below, we'll provide an overview of the app's key features and functionalities.
 
-𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮 - [Visit MingleMate](https://minglenow.netlify.app/login)  The app might be slow as it is deployed in a free platform with limited speed
+𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮 - [Visit MingleMate](https://minglenow.netlify.app/login)   (The app might be slow as it is deployed in a free platform with limited speed)
  
 ## Features
 

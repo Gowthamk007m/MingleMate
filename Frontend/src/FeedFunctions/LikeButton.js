@@ -76,7 +76,8 @@ const LikeButton = ({ image_id, profile, likeCount, from_pro }) => {
   };
 
   return (
-    <div className="relative cursor-pointer" onClick={handleLikeToggle}>
+    <div>
+    <div className="w-5 cursor-pointer" onClick={handleLikeToggle}>
       {isLiked ? (
         <div
           className={
@@ -88,7 +89,7 @@ const LikeButton = ({ image_id, profile, likeCount, from_pro }) => {
             height="35"
             viewBox="0 0 24 24"
             width="35"
-            className="fill-red text-red-500 transition-transform animate-rotate-y animate-once transform-gpu scale-100 hover:scale-110"
+            className="fill-red absolute text-red-500 transition-transform animate-rotate-y animate-once transform-gpu scale-100 hover:scale-110"
           >
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -108,7 +109,7 @@ const LikeButton = ({ image_id, profile, likeCount, from_pro }) => {
             height="35"
             viewBox="0 0 24 24"
             width="35"
-            className="fill-white text-red-500 transition-transform transform-gpu scale-100 hover:scale-110"
+            className="fill-white absolute text-red-500 transition-transform transform-gpu scale-100 hover:scale-110"
           >
             <path d="M0 0h24v24H0z" fill="none" />
             <path
@@ -118,11 +119,14 @@ const LikeButton = ({ image_id, profile, likeCount, from_pro }) => {
           </svg>
         </div>
       )}
-      {from_pro ? (
+ 
+    
+    </div>
+         <div className="relative mt-8">  {from_pro ? (
         <div className="w-16 ml-0">{count} Likes</div>
       ) : (
         <div className="w-18 ml-0">{count} Likes </div>
-      )}
+      )}</div>
     </div>
   );
 };

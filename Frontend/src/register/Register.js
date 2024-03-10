@@ -48,7 +48,8 @@ const RegistrationForm = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="max-w-md px-2 w-full p-6 bg-white rounded-lg shadow-lg">
           <div className="flex justify-center mb-8">
-            <a className="text-[35px]">𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮</a>
+          <a className="text-[35px]">𝓝𝓮𝔁𝓾𝓼</a>
+
           </div>
           <h1 className="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">
             Sign Up

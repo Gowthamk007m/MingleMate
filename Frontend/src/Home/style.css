@@ -1,0 +1,444 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('https://fonts.googleapis.com/icon?family=Material+Icons') format('woff2');
+}
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"); */
+body{
+  overflow-x: hidden;
+}
+
+.lazy-image-container {
+  position: relative;
+}
+
+/* RightData.css */
+
+/* Styles for the centered popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.142); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Adjust z-index as needed */
+}
+
+/* Styles for the popup content */
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(92, 91, 91, 0.934);
+  position: relative;
+  z-index: 10000; /* Ensure the content appears above the overlay */
+}
+
+/* Styles for the close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+.lazy-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+.blur-image {
+  filter: blur(10px); /* Adjust the blur amount as needed */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Reduce the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 2px; /* Adjust this value as needed */
+}
+
+/* Customize the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Change the background color if needed */
+}
+
+/* Customize the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Change the color of the scrollbar thumb */
+  border-radius: 4px; /* Add rounded corners to the scrollbar thumb */
+}
+
+.directleft::-webkit-scrollbar {
+  width: 1px; /* Set the width of the scrollbar */
+  height: 2px;
+}
+
+.directleft::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Set the background color of the track */
+}
+
+.directleft::-webkit-scrollbar-thumb {
+  background: #888; /* Set the color of the thumb */
+  border-radius: 4px; /* Add border radius to the thumb */
+}
+
+.directleft::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Set the color of the thumb on hover */
+}
+
+.directdown {
+  background: #ffffff;
+  border: solid 0.2px rgb(139, 136, 136);
+  width: 510px;
+  border-radius: 7px;
+  height: auto;
+  min-height: 400px;
+  margin-bottom: 10px;
+}
+
+.topbar {
+  background: #ffffff;
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+}
+.topimage {
+  border: solid 0.2px rgba(249, 60, 60, 0.459);
+  border-radius: 30px;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  overflow: hidden;
+  margin-left: 8px;
+  margin-top: 3px;
+  float: left;
+}
+.topimage img {
+  height: inherit;
+  width: inherit;
+}
+.topbartext {
+  padding-top: 14.5px;
+  padding-left: 8px;
+  padding-bottom: 8px;
+  float: left;
+}
+.topright {
+  float: right;
+  padding-right: 10px;
+  padding-top: 15px;
+  margin-bottom: -10px;
+}
+.postimage {
+  display: flex;
+  background: rgba(252, 249, 249, 0.659);
+  width: 100%;
+  border-top: solid 0.1px rgba(77, 74, 74, 0.552);
+  border-bottom: solid 0.1px;
+
+  border-radius: 6px;
+  justify-content: center;
+}
+.postimage img {
+  min-width: 250px;
+  min-height: 300px;
+  max-height: 450px;
+}
+.captionbar {
+  width: 95%;
+  word-wrap: break-word;
+  padding-left: 18px;
+  padding-top: 5px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  text-align: left;
+  color: rgb(14, 14, 14);
+}
+.likebutton {
+  padding-top: 7px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+
+  margin-left: 3px;
+  width: 60px;
+}
+
+.commentbox {
+  padding-top: 10px;
+  padding-left: 2px;
+  margin-left: 0px;
+}
+
+.captionright {
+  float: right;
+  margin-top: -82px;
+  margin-right: 5px;
+}
+.Like-Comment {
+  display: flex;
+}
+.likecount {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bolder;
+  font-size: 17px;
+  padding-top: 3px;
+  width: 80px;
+}
+.material-icons.md-36 {
+  font-size: 34px;
+}
+.material-icons:hover {
+  color: rgb(210, 137, 137);
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.material-icons.black {
+  color: #000000;
+}
+
+.fullright {
+  padding-top: 10px;
+  width: 33%;
+  background: #fafafa;
+  padding-top: 30px;
+}
+.rightfollow {
+  background: #ffffff;
+  width: auto;
+  height: fit-content;
+  margin-left: 50px;
+}
+.inside-right {
+  height: 40px;
+  border: solid rgb(110, 106, 106);
+  margin-bottom: 16px;
+}
+.container_one {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between; /* Add space between sidebar and right side */
+}
+
+
+.fullright {
+  background: #fafafa;
+  padding-top: 12px;
+  width: 200px;
+}
+
+.heightofstatus {
+  height: auto;
+  margin-top: -30px;
+}
+.paddingofstatus {
+  margin-bottom: -20px;
+  margin-left: -8px;
+  margin-right: -8px;
+  height: 130px;
+}
+.Stautstop {
+  margin-bottom: -60px; /* Reduce margin to bring closer to userlist */
+}
+
+.userlist {
+  margin-top: -20px; /* Reduce margin to bring closer to Stautstop */
+}
+.followlist {
+  background: #ffffff;
+  margin-top: 15px;
+  border: solid 0.1px rgb(170, 163, 163);
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+  height: fit-content;
+  width: auto;
+  justify-content: end;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 1407px) {
+  .followlist {
+    display: none;
+  }
+}
+.followpad {
+  margin-left: 90px;
+}
+.followUser {
+  float: right;
+  margin-top: 13px;
+  padding-right: 20px;
+}
+.followUser:hover {
+  color: rgba(8, 81, 133, 0.776);
+}
+.like-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.like-button .material-icons {
+  color: gray;
+  font-size: 24px;
+  transition: color 0.2s ease-in-out;
+}
+.likebutton button {
+  border: 0px;
+}
+.like-button.liked .material-icons {
+  color: red;
+}
+
+.sidebar {
+  background: rgb(255, 255, 255);
+  width: 16%;
+  text-align: center;
+  height: auto;
+  padding-top: 5px;
+  border-right: solid 1px black;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px; /* Replace 100px with the width of your container, where you want to show the name */
+}
+.fixed-size {
+  height: 350px;
+}
+.fixed-size img {
+  height: inherit;
+  object-fit: cover;
+  /* Hide any content that exceeds the container's dimensions */
+}
+
+.fixed-size-image {
+  width: 100%; /* Make sure the image fills the container width */
+  height: 100%; /* Make sure the image fills the container height */
+  object-fit: cover; /* Maintain aspect ratio and hide any overflow */
+}
+/* .test_container {
+  position: relative;
+  margin-left: 25%;
+} */
+/* Add the styles for the heart button and the animation */
+.heart-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+}
+
+/* Heart icon */
+/* Add the styles for the heart button and the animation */
+.heart-button {
+  background: none;
+  border: none;
+  outline: none; /* Remove the outline */
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+}
+
+/* Heart icon */
+.heart-button .material-icons {
+  font-size: 36px;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Animation for the liked state */
+.heart-button.liked .material-icons {
+  animation: heartBeat 0.8s ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cursorfollow {
+  cursor: pointer;
+}
+.imgsize img {
+  width: 50px;
+  height: 50px;
+}
+.Link {
+  color: rgb(110, 198, 230);
+  font-size: 15px;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.loading-animation {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #007bff;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

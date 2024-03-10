@@ -1,0 +1,18 @@
+# netlify.toml
+
+# Build settings
+[build]
+  # Command to build your React app
+  command = "npm run build"
+
+  # Directory where the built files are located after the build process
+  publish = "build"
+
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+
+

@@ -1,0 +1,64 @@
+.update-profile-form {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  background:rgb(1,38,93);
+  color: aliceblue;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="file"]{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white;
+
+}
+
+input[type="email"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+
+}
+
+button.update-button {
+  background-color: #1B96F7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.update-button:hover {
+  background-color: #0F76BD;
+}
+button.Cancel-button{
+      background-color: #f71b1b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}

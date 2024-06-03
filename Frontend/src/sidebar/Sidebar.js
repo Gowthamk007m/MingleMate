@@ -41,13 +41,9 @@ const Sidebar = ({ profile, activeButton, onButtonClick }) => {
       <div className={styles.mainbody}>
         <aside className={styles.sidebar}>
           <header className={styles.sidebar_header}>
-            <a className={styles.logo_img}>
-<<<<<<< HEAD
+            <p  className={styles.logo_img}>
               <p className="text-[25px]">𝓝𝓮𝔁𝓾𝓼</p>
-=======
-              <p className="text-[25px]">𝓜𝓲𝓷𝓰𝓵𝓮𝓜𝓪𝓽𝓮</p>
->>>>>>> de5ceb903b1f85176e8569f7abe31f219ff99aee
-            </a>
+            </p>
             <i
               className={`logo-icon uil uil-instagram ${styles.logo_icon}`}
             ></i>

@@ -1,5 +1,7 @@
 
 from rest_framework import generics
+
+from api.repositories import UserRepository
 from .serializers import RegisterSerializer
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -27,7 +29,8 @@ class UserAccountList(APIView):
     def get(self, request):
         try:
             current_user = request.user.id
-            user_accounts = User_Account.objects.all().exclude(user=current_user)
+            user_accounts_main = UserRepository().get_all_User()
+            user_accounts=user_accounts_main().exclude(user=current_user)
             serializer = UserAccountSerializer(user_accounts, many=True)
             # print("Serialized data:", serializer.data)
             return Response(serializer.data)
@@ -155,7 +158,7 @@ class ImagePostViewSet(viewsets.ReadOnlyModelViewSet):
 @api_view(['GET', 'DELETE'])
 def getProfile(request, pk):
     if request.method == 'GET':
-        profile = User_Account.objects.get(user_id=pk)
+        profile = UserRepository().get_user(pk)
         User_data=User.objects.get(id=pk)
         images = ImagePost.objects.filter(user=profile).order_by('-created_at')
         follower_users = UserFollowing.objects.filter(
